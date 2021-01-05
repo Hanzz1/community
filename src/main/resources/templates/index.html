@@ -9,7 +9,7 @@
     <script type="application/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<header class="navbar navbar-default" th:fragment="header">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -17,7 +17,7 @@
                 <span class="sr-only">校园论坛</span>
             </button>
             <a class="navbar-brand" href="#">校园论坛</a>
-            <a class="navbar-brand" href="#">首页</a>
+            <a class="navbar-brand" th:href="@{/index}">首页</a>
             <a class="navbar-brand" href="#">消息</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -28,8 +28,8 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">注册</a></li>
-                <li><a href="#">登录</a></li>
+                <li><a th:href="@{register}">注册</a></li>
+                <li><a th:href="@{login}">登录</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">我 <span class="caret"></span></a>
@@ -42,7 +42,7 @@
             </ul>
         </div>
     </div>
-</nav>
+</header>
 
 <div>
     <!-- 帖子列表 -->

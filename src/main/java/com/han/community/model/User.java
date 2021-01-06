@@ -11,7 +11,7 @@ public class User {
     private String  email;
     private int type;
     private int status;
-    private String  activitionCode;
+    private String  activationCode;
     private String  headerUrl;
     private Date createTime;
 
@@ -71,12 +71,12 @@ public class User {
         this.status = status;
     }
 
-    public String getActivitionCode() {
-        return activitionCode;
+    public String getActivationCode() {
+        return activationCode;
     }
 
-    public void setActivitionCode(String activitionCode) {
-        this.activitionCode = activitionCode;
+    public void setActivitionCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     public String getHeaderUrl() {
@@ -105,7 +105,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", type=" + type +
                 ", status=" + status +
-                ", activitionCode='" + activitionCode + '\'' +
+                ", activationCode='" + activationCode + '\'' +
                 ", headerUrl='" + headerUrl + '\'' +
                 ", createTime=" + createTime +
                 '}';

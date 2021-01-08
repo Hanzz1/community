@@ -1,8 +1,10 @@
 package com.han.community.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
-
+@Data
 public class User {
     private int id;
     private String  username;
@@ -75,7 +77,7 @@ public class User {
         return activationCode;
     }
 
-    public void setActivitionCode(String activationCode) {
+    public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
 

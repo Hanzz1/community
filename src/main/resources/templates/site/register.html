@@ -11,13 +11,13 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="shortcut icon" th:href="favicon.ico">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/css/plugins/iCheck/custom.css}">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
     <script>if (window.top !== window.self) {
         window.top.location = window.location;
     }</script>
@@ -85,11 +85,11 @@
 </div>
 
 <!-- 全局js -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/global.js}"></script>
 <script th:src="@{/js/register.js}"></script>
-<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script th:src="@{/js/plugins/iCheck/icheck.min.js}"></script>
 <script>
     $(document).ready(function () {
         $('.i-checks').iCheck({

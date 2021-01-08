@@ -2,8 +2,10 @@ package com.han.community;
 
 import com.han.community.CommunityApplication;
 import com.han.community.dao.DiscussPostMapper;
+import com.han.community.dao.LoginTicketMapper;
 import com.han.community.dao.UserMapper;
 import com.han.community.model.DiscussPost;
+import com.han.community.model.LoginTicket;
 import com.han.community.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,12 @@ public class MapperTests {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private DiscussPostMapper discussPostMapper;
+
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
 
     @Test
     public void testSelectUser(){
@@ -65,9 +73,6 @@ public class MapperTests {
 
 
 
-    @Autowired
-    private DiscussPostMapper discussPostMapper;
-
     @Test
     public  void testSelectPosts(){
         List<DiscussPost>  list=  discussPostMapper.selectDiscussPost(101,0,10);
@@ -78,5 +83,39 @@ public class MapperTests {
         int row = discussPostMapper.selectDiscussPostRows(101);
         System.out.println(row);
     }
+
+
+    @Test
+    public void testInsertLoginTicket(){
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(101);
+        loginTicket.setTicket("aasadasd");
+        loginTicket.setStatus(0);
+        loginTicket.setExpired(new Date(System.currentTimeMillis()+1000*60*10));
+
+        loginTicketMapper.insertLoginTicket(loginTicket);
+
+    }
+
+    @Test
+    public void testSelectLoginTicket(){
+        LoginTicket loginTicket = loginTicketMapper.selectByTicket("aasadasd");
+        System.out.println(loginTicket);
+
+        loginTicketMapper.updateStatus("aasadasd",1);
+        loginTicket = loginTicketMapper.selectByTicket("aasadasd");
+        System.out.println(loginTicket);
+    }
+
+    /*@Test
+    public void testSelectLoginTicket() {
+        LoginTicket loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+
+        loginTicketMapper.updateStatus("abc", 1);
+        loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+    }
+*/
 
 }

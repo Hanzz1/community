@@ -1,94 +1,121 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <title>发布 - 码匠社区</title>
 
-    <head th:insert="~{import :: head}"></head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head th:insert="~{import :: markdown}"></head>
+
+    <title> - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
 </head>
 
-<body>
-
-<div th:insert="~{navigation :: nav}"></div>
+<body class="gray-bg">
+<header class="navbar navbar-default" th:replace="index::header"/>
+<!-- 内容 -->
 <div class="container-fluid main">
     <div class="row">
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h3>
-            <ul class="nav nav-tabs">
-                <li role="presentation">
-                    <a >最新</a>
-                </li>
-
-            </ul>
-
-            <div class="media" th:each="question : ${pagination.data}">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-rounded"
-                             th:src="${question.user.avatarUrl}">
-                    </a>
+        <div class="container p-5 mt-3 mb-3 white-bg">
+            <!-- 上传头像 -->
+            <h6 class="text-left text-info border-bottom pb-2">上传头像</h6>
+            <form class="mt-5" method="post"
+                  enctype="multipart/form-data" th:action="@{/user/upload}">
+                <div class="form-group row mt-4">
+                    <label for="head-image" class="col-sm-2 col-form-label text-right">选择头像:</label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+                            <input type="file"
+                                   th:class="|custom-file-input ${error!=null?'is-invalid':''}|"
+                                   id="head-image" name="headerImage" lang="es" required="">
+                            <label class="custom-file-label" for="head-image" data-browse="文件">选择一张图片</label>
+                            <div class="invalid-feedback" th:text="${erroe}">
+                                该账号不存在!
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <span style="color: #c74747" th:if="${question.sticky >= 1}">[置顶] </span>
-                        <a th:href="@{'/question/'+ ${question.id}}" th:text="${question.title}"></a>
-                    </h4>
-                    <span class="text-desc"><span th:text="${question.commentCount}"></span> 个回复 • <span
-                            th:text="${question.viewCount}"></span> 次浏览 • <span
-                            th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span></span>
+                <div class="form-group row mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 text-center">
+                        <button type="submit" class="btn btn-info text-white form-control">立即上传</button>
+                    </div>
                 </div>
-            </div>
-
-
-
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li th:if="${pagination.showFirstPage}">
-                        <a th:href="@{/(page=1,search=${search},tag=${tag},sort=${sort})}" aria-label="Previous">
-                            <span aria-hidden="true">&lt;&lt;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showPrevious}">
-                        <a th:href="@{/(page=${pagination.page - 1},search=${search},tag=${tag},sort=${sort})}"
-                           aria-label="Previous">
-                            <span aria-hidden="true">&lt;</span>
-                        </a>
-                    </li>
-
-                    <li th:each="page : ${pagination.pages}" th:class="${pagination.page == page}? 'active' : ''">
-                        <a th:href="@{/(page=${page},search=${search},tag=${tag},sort=${sort})}" th:text="${page}"></a>
-                    </li>
-
-                    <li th:if="${pagination.showNext}">
-                        <a th:href="@{/(page=${pagination.page +1 },search=${search},tag=${tag},sort=${sort})}"
-                           aria-label="Previous">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showEndPage}">
-                        <a th:href="@{/(page=${pagination.totalPage},search=${search},tag=${tag},sort=${sort})}"
-                           aria-label="Previous">
-                            <span aria-hidden="true">&gt;&gt;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            </form>
+            <!-- 修改密码 -->
+            <h6 class="text-left text-info border-bottom pb-2 mt-5">修改密码</h6>
+            <form class="mt-5" method="post" th:action="@{/user/password}">
+                <div class="form-group row mt-4">
+                    <label for="old-password" class="col-sm-2 col-form-label text-right">原密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" th:class="|form-control ${passsword!=null?'is-invalid':''}|"
+                               name="oldPassword"
+                               id="old-password" placeholder="请输入原始密码!" required>
+                        <div class="invalid-feedback" th:text="${passsword}">
+                            密码长度不能小于8位!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <label for="new-password" class="col-sm-2 col-form-label text-right">新密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control"
+                               name="newPassword"
+                               id="new-password" placeholder="请输入新的密码!" required>
+                        <div class="invalid-feedback">
+                            密码长度不能小于8位!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <label for="confirm-password"
+                           class="col-sm-2 col-form-label text-right">确认密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" th:class="|form-control ${passsword!=null?'is-invalid':''}|"
+                               id="confirm-password" name="scecondPassword" placeholder="再次输入新密码!" required>
+                        <div class="invalid-feedback" th:text="${passsword}">
+                            两次输入的密码不一致!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 text-center">
+                        <button type="submit" class="btn btn-info text-white form-control">立即保存</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <div th:insert="~{notice :: notice}"></div>
-            <!--相关问题-->
-            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>热门标签</h4>
-                <a th:each="tag : ${tags}" th:href="@{/(page=1,search=${search},tag=${tag},sort=${sort})}"
-                   th:text="${tag}" class="community-tag"></a>
-            </div>
-            <div th:insert="~{side :: side}"></div>
-        </div>
+
     </div>
 </div>
+
+<script>
+    function refresh_kaptcha() {
+        var CONTEXT_PATH = "/community";
+        var path = CONTEXT_PATH + "/kaptcha?p=" + Math.random();
+        $("#kaptcha").attr("src", path);
+    }
+
+</script>
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
 
 </body>
 

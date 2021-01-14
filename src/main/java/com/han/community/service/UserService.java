@@ -88,8 +88,8 @@ public class UserService implements CommunityConstant {
         user.setType(0);
         user.setStatus(0);
         user.setActivationCode(CommunityUtil.generateUUID());
-        user.setHeaderUrl(String.format("http://95.169.14.31/data/a/a%d.gif",new Random().nextInt(4)));
-        http://95.169.14.31/data/a/a2.gif
+        user.setHeaderUrl(String.format("http://www.gravatar.com/avatar/%d?r=PG&s=256&default=identicon", new Random().nextInt(1000)));
+//        http://95.169.14.31/data/a/a2.gif
         user.setCreateTime(new Date());
         userMapper.insertUser(user);
 
@@ -165,6 +165,15 @@ public class UserService implements CommunityConstant {
 
     public LoginTicket findLoginTicket(String ticket){
         return loginTicketMapper.selectByTicket(ticket);
+    }
+
+    public int updateHeader(int userId , String headUrl){
+        return userMapper.updateHeader(userId,headUrl);
+    }
+
+
+    public int updatePassword(int userId ,String password){
+        return userMapper.updatePassword(userId,password);
     }
 
 }

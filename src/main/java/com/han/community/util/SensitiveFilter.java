@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -124,7 +125,7 @@ public class SensitiveFilter {
         private boolean isKeywordEnd = false;
 
         //子节点 key是下级字符 value下级节点
-        private Map<Character, TrieNode> subNode = null;
+        private Map<Character, TrieNode> subNode = new HashMap<>();
 
         public boolean isKeywordEnd() {
             return isKeywordEnd;

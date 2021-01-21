@@ -59,7 +59,12 @@ public class Page {
         return (current-1)*limit;
     }
     public int getTotal(){
-        return (int) Math.ceil(rows/limit);
+        if (rows % limit == 0) {
+            return rows / limit;
+        } else {
+            return rows / limit + 1;
+        }
+
     }
 
     //获取起始页码

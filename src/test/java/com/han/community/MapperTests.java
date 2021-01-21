@@ -3,9 +3,11 @@ package com.han.community;
 import com.han.community.CommunityApplication;
 import com.han.community.dao.DiscussPostMapper;
 import com.han.community.dao.LoginTicketMapper;
+import com.han.community.dao.MessageMapper;
 import com.han.community.dao.UserMapper;
 import com.han.community.model.DiscussPost;
 import com.han.community.model.LoginTicket;
+import com.han.community.model.Message;
 import com.han.community.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +32,9 @@ public class MapperTests {
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser(){
@@ -117,5 +122,27 @@ public class MapperTests {
         System.out.println(loginTicket);
     }
 */
+
+    @Test
+    public void testSelectMesage(){
+        List<Message> messages = messageMapper.selectConversations(111, 0, 20);
+        for (Message message : messages) {
+            System.out.println(message);
+        }
+        final int i = messageMapper.selectConversationCount(111);
+        System.out.println(i);
+
+        final List<Message> messages1 = messageMapper.selectLetters("111_112", 0, 10);
+        for (Message a : messages1) {
+            System.out.println(a);
+        }
+
+        final int i1 = messageMapper.selectLetterCount("111_112");
+        System.out.println(i1);
+
+        final int i2 = messageMapper.selectLetterUnreadCount(111, "111_131");
+        System.out.println(i2);
+
+    }
 
 }

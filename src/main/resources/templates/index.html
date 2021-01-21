@@ -20,7 +20,7 @@
             </button>
             <a class="navbar-brand" th:href="@{/index}">校园论坛</a>
             <a class="navbar-brand" th:href="@{/index}">首页</a>
-            <a class="navbar-brand" th:if="${loginUser!=null}" href="#">消息</a>
+            <a class="navbar-brand" th:if="${loginUser!=null}" th:href="@{/letter/list}">消息</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left">

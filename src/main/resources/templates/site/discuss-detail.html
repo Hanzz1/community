@@ -24,6 +24,7 @@
     <script>if (window.top !== window.self) {
         window.top.location = window.location;
     }</script>
+    <script th:src="@{/js/discuss.js}"></script>
 </head>
 
 <body class="gray-bg">
@@ -57,7 +58,13 @@
                                 发布于 <b th:text="${#dates.format(post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15
                                 15:32:18</b>
                                 <ul class="d-inline float-right">
-                                    <li class="d-inline ml-2"><a href="#" class="text-primary">赞 11</a></li>
+                                    <li class="d-inline ml-2">
+                                        <a href="javascript:;" th:onclick="|like(this,1,${post.id});|"
+                                           class="text-primary">
+                                            <b th:text="${likeStatus==1?'已赞':'赞'}">赞</b>
+                                            <i th:text="${likeCount}">11</i>
+                                        </a>
+                                    </li>
                                     <li class="d-inline ml-2">|</li>
                                     <li class="d-inline ml-2"><a href="#replyform" class="text-primary">回帖 <i
                                             th:text="${post.commentCount}">7</i></a></li>
@@ -157,23 +164,25 @@
 
                                     <!-- 回复输入框 -->
                                     <li class="pb-3 pt-3">
-                                          <form method="post" th:action="@{|/comment/add/${post.id}|}">
-                                              <div>
-                                                  <input type="text" class="input-size" name="content" placeholder="请输入你的观点"/>
-                                                  <input type="hidden" name="entityType" value="2">
-                                                  <input type="hidden" name="entityId" th:value="${cvo.comment.id}">
-                                              </div>
-                                              <div class="text-right mt-2">
-                                                  <button type="submit" class="btn btn-primary btn-sm" onclick="#">
-                                                        &nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;</button>
-                                              </div>
-                                          </form>
+                                        <form method="post" th:action="@{|/comment/add/${post.id}|}">
+                                            <div>
+                                                <input type="text" class="input-size" name="content"
+                                                       placeholder="请输入你的观点"/>
+                                                <input type="hidden" name="entityType" value="2">
+                                                <input type="hidden" name="entityId" th:value="${cvo.comment.id}">
+                                            </div>
+                                            <div class="text-right mt-2">
+                                                <button type="submit" class="btn btn-primary btn-sm" onclick="#">
+                                                    &nbsp;&nbsp;回&nbsp;&nbsp;复&nbsp;&nbsp;
+                                                </button>
+                                            </div>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
-<!--                    <nav class="mt-5" th:replace="index::pagination"></nav>-->
+                    <!--                    <nav class="mt-5" th:replace="index::pagination"></nav>-->
                     <!--   &lt;!&ndash; 分页 &ndash;&gt;
                        <nav class="mt-5" th:replace="index::pagination">
                            <ul class="pagination justify-content-center">

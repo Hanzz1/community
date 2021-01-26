@@ -97,7 +97,7 @@
                         <li class="media pb-3 pt-3 mb-3 border-bottom position-relative" th:each="map:${conversations}">
                             <span class="badge badge-danger" th:text="${map.unreadCount}" th:if="${map.unreadCount!=0}">3</span>
                             <a href="profile.html">
-                                <img th:src="${map.target.headerUrl}" class="mr-4 rounded-circle user-header"
+                                <img th:src="${map.target.headerUrl}" class="mr-4 rounded-circle user-header img-circle"
                                      alt="用户头像" style="width: 50px; height: 50px;">
                             </a>
                             <div class="media-body">
@@ -114,6 +114,26 @@
                             </div>
                         </li>
                     </ul>
+                    <!-- 分页 -->
+                    <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a></li>
+                            <li th:class="|page-item ${i==page.current?'active':''}|"
+                                th:each="i:${#numbers.sequence(page.from,page.to)}">
+                                <a class="page-link" th:href="@{list(current=${i})}" th:text="${i}">1</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">下一页</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">末页</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

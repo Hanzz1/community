@@ -31,17 +31,17 @@
     <div>
         <div>
 
-            <h1 class="logo-name">h</h1>
+            <h1 class="logo-name">Eu</h1>
 
         </div>
-        <h3>欢迎使用 hAdmin</h3>
+        <h3>欢迎使用本论坛</h3>
 
         <form class="m-t" role="form" th:action="@{/login}" method="post">
             <div class="form-group">
                 <input type="text" th:class="|form-control ${usernameMsg!=null?'is-invalid':''}|"
                        name="username" id="username" th:value="${param.username}"
                        placeholder="用户名" required="">
-                <div class="invalid-feedback" th:text="${usernameMsg}">
+                <div style="color:#F00 " th:text="${usernameMsg}">
                     该账号不存在!
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <input type="password" class="form-control" name="password"
                        th:class="|form-control ${passwordMsg!=null?'is-invalid':''}|"
                        th:value="${param.password}" placeholder="密码" required="">
-                <div class="invalid-feedback" th:text="${passwordMsg}">
+                <div style="color:#F00" th:text="${passwordMsg}">
                     密码长度不能小于8位!
                 </div>
             </div>
@@ -58,8 +58,8 @@
                     <input type="text" class="form-control" id="verifycode" name="code"
                            th:class="|form-control ${codeMsg!=null?'is-invalid':''}|"
                            placeholder="请输入验证码!">
-                    <div class="invalid-feedback" th:text="${codeMsg}">
-                        验证码不正确!
+                    <div  style="color:#F00" th:text="${codeMsg}">
+                        验证码不正确!1111111
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -68,14 +68,15 @@
                     <a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">刷新验证码</a>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+            <button type="submit" class="btn btn-primary block full-width m-b">
+                登 录</button>
 
 
             <p class="text-muted text-center">
                 <input type="checkbox" id="remember-me" name="rememberme"
                        th:checked="${param.rememberme}">
                 <label class="form-check-label" for="remember-me">记住我</label>|
-                <a href="login.html#"><small>忘记密码了？</small></a> | <a th:href="@{register}">注册一个新账号</a>
+               <a th:href="@{register}">注册一个新账号</a>
             </p>
 
         </form>

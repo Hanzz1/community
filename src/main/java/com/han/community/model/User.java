@@ -3,6 +3,8 @@ package com.han.community.model;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 public class User {
@@ -112,4 +114,5 @@ public class User {
                 ", createTime=" + createTime +
                 '}';
     }
+
 }

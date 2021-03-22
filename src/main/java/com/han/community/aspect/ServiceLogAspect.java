@@ -33,6 +33,9 @@ public class ServiceLogAspect {
         //用户【1.2.3.4】，在时间【xxx】，访问量【什么方法com.han.xxx】
         ServletRequestAttributes attributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attributes == null){
+             return;
+        }
         final HttpServletRequest request = attributes.getRequest();
         final String ip = request.getRemoteHost();
         String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

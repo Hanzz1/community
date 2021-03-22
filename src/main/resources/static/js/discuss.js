@@ -1,7 +1,7 @@
-function like(btn, entityType, entityId , entityUserId) {
+function like(btn, entityType, entityId , entityUserId, postId) {
     $.post(
         "http://localhost:8887/community/like",
-        {"entityType":entityType,"entityId":entityId,"entityUserId":entityUserId},
+        {"entityType":entityType,"entityId":entityId,"entityUserId":entityUserId,"postId":postId},
         function(data) {
             data = $.parseJSON(data);
             if(data.code == 0) {
@@ -12,6 +12,25 @@ function like(btn, entityType, entityId , entityUserId) {
             }
         }
     );
+}
+
+
+// 删除
+function setDelete(postId) {
+
+
+    if(window.confirm('你确定要取消交易吗？')){
+        $.post(
+            "http://localhost:8887/community/delete",
+            {"postId":postId},
+            function(data) {
+                location.href = "http://localhost:8887/community/index";
+            }
+        );
+    }
+
+
+
 }
 
 

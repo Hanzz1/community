@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link th:href="@{/css/discuss-detail.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+</head>
+
+<body class="gray-bg">
+<header class="navbar navbar-default" th:replace="index::header"/>
+
+<div class="container-fluid main profile">
+    <div class="row">
+        <div class="main">
+            <div class="container" style="background: white">
+                <!-- 选项 -->
+                <div class="position-relative">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{|/user/profile/${user.id}|}">个人信息</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{|/user/my-post/${user.id}|}"> 我的帖子</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{|/user/my-reply/${user.id}|}">我的回复</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 我的回复 -->
+                <div class="mt-4">
+                    <h6><b class="square"></b> 回复的帖子(379)</h6>
+                    <ul class="list-unstyled mt-4 pl-3 pr-3">
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                        <li class="border-bottom pb-3 mt-4">
+                            <div class="font-size-16 text-info">
+                                <a href="#" class="text-info">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            </div>
+                            <div class="mt-1 font-size-14">
+                                顶顶顶!
+                            </div>
+                            <div class="text-right font-size-12 text-muted">
+                                回复于 <b>2019-04-15 10:10:10</b>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 分页 -->
+                    <nav class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">首页</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                            <li class="page-item"><a class="page-link" href="#">末页</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+
+</body>
+
+</html>

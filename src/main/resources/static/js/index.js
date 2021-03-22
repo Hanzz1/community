@@ -30,3 +30,33 @@ function publish() {
     );
 
 }
+// 删除
+function deletepost(postId) {
+
+
+    if(window.confirm('你确定要删除本条帖子吗？')){
+        $.post(
+            "http://localhost:8887/community/delete",
+            {"postId":postId},
+            function(data) {
+                location.href = "http://localhost:8887/community/admin/postdata";
+            }
+        );
+    }
+}
+
+
+// 删除
+function deleteuser(userId) {
+
+    if(window.confirm('你确定要删除该用户吗？')){
+        $.post(
+            "http://localhost:8887/community/admin/deleteuser",
+            {"userId":userId},
+            function(data) {
+                location.href = "http://localhost:8887/community/admin/userdata";
+            }
+        );
+    }
+}
+

@@ -16,13 +16,6 @@ public class LikeService {
 
     // 点赞
     public void like(int userId, int entityType, int entityId , int entityUserId) {
-//        String entityLikeKey = RedisKeyUtil.getEntityLikeKey(entityType, entityId);
-//        boolean isMember = redisTemplate.opsForSet().isMember(entityLikeKey, userId);
-//        if (isMember) {
-//            redisTemplate.opsForSet().remove(entityLikeKey, userId);
-//        } else {
-//            redisTemplate.opsForSet().add(entityLikeKey, userId);
-//        }
         redisTemplate.execute(new SessionCallback() {
             @Override
             public Object execute(RedisOperations redisOperations) throws DataAccessException {
@@ -65,4 +58,9 @@ public class LikeService {
         Integer count = (Integer) redisTemplate.opsForValue().get(userLikeKey);
         return count == null ? 0 : count.intValue();
     }
+
+
+
+
+
 }

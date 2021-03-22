@@ -3,6 +3,8 @@ package com.han.community.dao;
 import com.han.community.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -19,5 +21,12 @@ public interface UserMapper {
     int updateHeader(int id , String headerUrl);
 
     int updatePassword(int id,String password);
+
+    User selectByIdAndTpye(String username, String password , String admintype);
+
+    List<User> selectUser();
+
+    //删除
+    int deleteUserByUserId(int userId);
 
 }

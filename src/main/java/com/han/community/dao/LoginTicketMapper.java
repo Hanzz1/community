@@ -4,6 +4,7 @@ import com.han.community.model.LoginTicket;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
+@Deprecated//申明这个主键不推荐使用
 public interface LoginTicketMapper {
 
     @Insert({

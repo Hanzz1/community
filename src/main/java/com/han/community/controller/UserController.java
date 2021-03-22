@@ -2,8 +2,10 @@ package com.han.community.controller;
 
 import com.han.community.annotation.LoginRequired;
 import com.han.community.model.User;
+import com.han.community.service.FollowService;
 import com.han.community.service.LikeService;
 import com.han.community.service.UserService;
+import com.han.community.util.CommunityConstant;
 import com.han.community.util.CommunityUtil;
 import com.han.community.util.HostHolder;
 import org.apache.commons.lang3.StringUtils;
@@ -13,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ import java.io.OutputStream;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController implements CommunityConstant {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -48,6 +47,9 @@ public class UserController {
 
     @Autowired
     private LikeService likeService;
+
+    @Autowired
+    private FollowService followService;
 
     @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
@@ -145,10 +147,45 @@ public class UserController {
         final int likeCount = likeService.findUserLikeCount(userId);
         model.addAttribute("likeCount",likeCount);
 
+        //关注数量
+        final long followeeCount = followService.findFolloweeCount(userId, ENTITY_TYPE_USER);
+        model.addAttribute("followeeCount" ,followeeCount);
+        //粉丝数量
+        long followerCount  = followService.findFollowerCount(ENTITY_TYPE_USER,userId);
+        model.addAttribute("followerCount" ,followerCount);
+        //是否已关注
+        boolean hasFollowed  = false;
+        if (hostHolder.getUser() != null){
+            hasFollowed = followService.hasFollowed(hostHolder.getUser().getId(),ENTITY_TYPE_USER,userId);
+        }
+        model.addAttribute("hasFollowed",hasFollowed);
         return "/site/profile";
-
 
     }
 
+    @RequestMapping(path = "/my-post/{userId}" , method = RequestMethod.GET)
+    public String getMyPostPage(@PathVariable("userId") int userId ,Model model){
+        User user = userService.findUserById(userId);
+        if (user == null){
+            throw new RuntimeException("该用户不存在");
+        }
+        //用户基本信息
+        model.addAttribute("user",user);
+
+        return "/site/my-post";
+
+    }
+    @RequestMapping(path = "/my-reply/{userId}" , method = RequestMethod.GET)
+    public String getMyreplyPage(@PathVariable("userId") int userId ,Model model){
+        User user = userService.findUserById(userId);
+        if (user == null){
+            throw new RuntimeException("该用户不存在");
+        }
+        //用户基本信息
+        model.addAttribute("user",user);
+
+        return "/site/my-reply";
+
+    }
 
 }

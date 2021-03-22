@@ -18,5 +18,26 @@ public interface CommunityConstant {
 
     //实体类型  评论
     int ENTITY_TYPE_COMMENT = 2;
+
+    //实体类型  用户人数
+    int ENTITY_TYPE_USER = 3;
+
+    //主题  评论
+    String TOPIC_COMMENT = "comment";
+    //点赞
+    String TOPIC_LIKE = "like";
+    //关注
+    String TOPIC_FOLLOW = "follow";
+
+    //系统用户id
+    int SYSTEM_USER_ID= 1;
+
+    //普通用户的权限
+    String AUTHORITY_USER = "user";
+
+    //管理员
+    String AUTHORITY_ADMIN = "admin";
+
+
 }
 

@@ -1,10 +1,7 @@
 package com.han.community.controller;
 
 import com.han.community.dao.DiscussPostMapper;
-import com.han.community.model.Comment;
-import com.han.community.model.DiscussPost;
-import com.han.community.model.Page;
-import com.han.community.model.User;
+import com.han.community.model.*;
 import com.han.community.service.CommentService;
 import com.han.community.service.DiscussPostService;
 import com.han.community.service.LikeService;
@@ -65,8 +62,10 @@ public class DiscussPostController  implements CommunityConstant {
 
     @RequestMapping(path = "/detail/{discussPostId}", method = RequestMethod.GET)
     public String getDiscussPost(@PathVariable("discussPostId") int discussPostId, Model model, Page page) {
+        int user1id = hostHolder.getUser().getId();
         // 帖子
         DiscussPost post = discussPostService.findDiscussPostById(discussPostId);
+        model.addAttribute("user1id",user1id);
         model.addAttribute("post", post);
         // 作者
         User user = userService.findUserById(post.getUserId());
@@ -147,5 +146,6 @@ public class DiscussPostController  implements CommunityConstant {
 
         return "/site/discuss-detail";
     }
+
 
 }

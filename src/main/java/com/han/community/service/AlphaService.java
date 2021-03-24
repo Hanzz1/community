@@ -74,7 +74,7 @@ public class AlphaService {
         discussPost.setTitle("hello");
         discussPostMapper.insertDiscussPost(discussPost);
 
-        int x = 0 / 0;
+//        int x = 0 / 0;
 
         return "ok";
     }

@@ -69,4 +69,10 @@
         delete from discuss_post where id = #{postId}
     </delete>
 
+
+
+    <update id="updateTitleAndContent">
+        update discuss_post set title = #{title},content = #{content} where id = #{id}
+    </update>
+
 </mapper>

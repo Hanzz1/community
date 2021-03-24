@@ -29,4 +29,8 @@ public interface UserMapper {
     //删除
     int deleteUserByUserId(int userId);
 
+
+    //更新admin
+    int updateUserData(int id,String username,String email,int type ,int status);
+
 }

@@ -19,7 +19,7 @@ function like(btn, entityType, entityId , entityUserId, postId) {
 function setDelete(postId) {
 
 
-    if(window.confirm('你确定要取消交易吗？')){
+    if(window.confirm('你确定要取消吗？')){
         $.post(
             "http://localhost:8887/community/delete",
             {"postId":postId},

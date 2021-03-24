@@ -80,4 +80,10 @@
         delete from user where id = #{userId}
     </delete>
 
+    <!--//admin更新user信息  username, email, type, status-->
+    <update id="updateUserData" >
+        update  user set username = #{username},email = #{email},
+        type = #{type},status = #{status} where id = #{id}
+    </update>
+
 </mapper>

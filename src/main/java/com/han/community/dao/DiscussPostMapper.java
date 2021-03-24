@@ -32,4 +32,7 @@ public interface DiscussPostMapper {
     //删除
     int deletePostByPostId(int postId);
 
+    //改帖子标题和内容
+    int updateTitleAndContent(int id , String title , String content);
+
 }

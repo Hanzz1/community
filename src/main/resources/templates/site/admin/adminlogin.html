@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/iconfont.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/survey.css}" rel="stylesheet" type="text/css">
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jsencrypt.min.js}"></script>
+	<script th:src="@{/js/base64.js}"></script>
+    <script th:src="@{/js/adminLogin.js}"></script>
+    <title>登录</title>
+        <style type="text/css">
+            #codeValidateImg
+            {
+                font-family:Arial;
+                font-style:italic;
+                font-weight:bold;
+                font-size:15px;
+                border:0;
+                letter-spacing:2px;
+                color:blue;
+                height: 35px;
+                width: 60px;
+            }
+     </style>
+</head>
+<body th:style="|background-image:url(@{/img/index_bg.png})|">
+
+
+<div class="lc-content">
+    <form class="lc-block">
+        <div>
+            <h1>校园论坛后端管理平台</h1>
+            <div class="input-groups" style="padding:0;margin-top:20px;">
+                <div class="input-item">
+                    <span class="loginLable" >用户名：</span>
+                    <input type="text" placeholder="请输入用户名" id="username">
+					<img th:src="@{/img/user.png}" style="vertical-align: middle;width: 17px;" />
+                </div>
+                <div class="input-item">
+                    <span class="loginLable" >密 码：</span>
+                    <input type="password" placeholder="请输入密码" id="password">
+                    <img th:src="@{/img/locked.png}" style="vertical-align: middle;width: 17px;" />
+                </div>
+
+                <div class="input-item">
+                    <span class="loginLable" >验证码：</span>
+                    <input type="text" class="form-control" placeholder="请输入验证码" id="code" style="width:120px;">
+                <span style="float:right">
+	             	<input type="button"  id="codeValidateImg" onclick="flushValidateCode()"/>
+	            </span>
+                </div>
+            </div>
+			<div style="height:40px;">
+				<span id="setInfo"></span>
+            </div>
+            <div class="login-btn">
+                <button type="button" onclick="login()" style="cursor:pointer;">登录</button>
+            </div>
+        </div>
+
+        <p class="login-text-center">
+            <i></i>han@2021
+        </p>
+    </form>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+    flushValidateCode();
+});
+</script>

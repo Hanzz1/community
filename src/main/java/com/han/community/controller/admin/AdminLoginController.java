@@ -20,7 +20,12 @@ public class AdminLoginController {
     @Autowired
     private AdminService adminService;
 
+    @RequestMapping(path = "/showmoeny",method = RequestMethod.GET)
+    public String showmoeny(){
 
+
+        return "/site/admin/showmoney";
+    }
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public String  index(){

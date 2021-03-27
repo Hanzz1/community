@@ -3,6 +3,7 @@ function login(){
 	var username = $('#username').val();
 	var password = $('#password').val();
 	var code = $('#code').val();
+	var admintype = 1;
 	$("#setInfo").html("");
 	var result = test(username,password,code);
 	if(result == false){
@@ -13,9 +14,11 @@ function login(){
 	$.ajax({
 		type :"POST",
 		url:"http://localhost:8887/community/admin/login1",
-		data: {"username":username,"password":password,"admintype":1},
+		data: {"username":username,"password":password,"admintype":admintype},
 		success: function (data) {
-			sessionStorage.setItem("adminSUCCESSadmin", data);
+
+			//window.location = "http://localhost:8887/community/admin/index";
+			sessionStorage.setItem("adminSUCCESSadmin", admintype);
 
 			if (data!== "1"){
 				window.location = "http://localhost:8887/community/admin/login";
